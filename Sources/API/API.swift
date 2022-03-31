@@ -20,16 +20,10 @@ public final class API: LambdaHandler {
         /// so `context.logger` is used once at the beginning of the invocation as a workaround to get print statements to appear in the logs
         context.logger.log(level: .info, "This log message exists purely as a workaround to get print statements to work properly.")
         
-        Task(priority: .none, operation: { 
-            // included for context, bot not required to produce error
-//            do {
-//                let response: APIGateway.V2.Response=try {
-//                    // do `async` stuff
-//                }()
-//                callback(.success(response))
-//            } catch {
-//                callback(.failure(error))
-//            }
+        Task(priority: .none, operation: {
+            // do `async` stuff
+            let response: APIGateway.V2.Response = .init(statusCode: .ok, body: "It's working now!")
+            callback(.success(response))
         })
     }
     
