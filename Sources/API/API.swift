@@ -20,6 +20,7 @@ public final class API: LambdaHandler {
         /// so `context.logger` is used once at the beginning of the invocation as a workaround to get print statements to appear in the logs
         context.logger.log(level: .info, "This log message exists purely as a workaround to get print statements to work properly.")
         
+        // works if you comment out initialization of the `Task`
         Task(priority: .none, operation: {
             // do `async` stuff
             let response: APIGateway.V2.Response = .init(statusCode: .ok, body: "It's working now!")
